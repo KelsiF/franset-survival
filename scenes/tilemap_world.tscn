@@ -1,0 +1,165 @@
+[gd_scene load_steps=10 format=3 uid="uid://bgamigva41n67"]
+
+[ext_resource type="Script" path="res://scripts/tilemap_world.gd" id="1_j52ec"]
+[ext_resource type="Texture2D" uid="uid://brx4gkb501sa2" path="res://sprites/ground.png" id="1_unlef"]
+[ext_resource type="Texture2D" uid="uid://bd4dto357wwji" path="res://sprites/water.png" id="2_nycl8"]
+
+[sub_resource type="Gradient" id="Gradient_ubtc6"]
+colors = PackedColorArray(0, 0, 1, 1, 0, 1, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_763ss"]
+noise_type = 3
+frequency = 0.0053
+domain_warp_enabled = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yq423"]
+width = 1920
+height = 1080
+in_3d_space = true
+color_ramp = SubResource("Gradient_ubtc6")
+noise = SubResource("FastNoiseLite_763ss")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_btfu2"]
+texture = ExtResource("1_unlef")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+7:1/0 = 0
+6:1/0 = 0
+5:1/0 = 0
+4:1/0 = 0
+3:1/0 = 0
+2:1/0 = 0
+1:1/0 = 0
+0:1/0 = 0
+0:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+7:3/0 = 0
+7:2/0 = 0
+6:2/0 = 0
+7:4/0 = 0
+6:4/0 = 0
+5:4/0 = 0
+4:4/0 = 0
+3:4/0 = 0
+2:4/0 = 0
+1:4/0 = 0
+0:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+7:6/0 = 0
+6:6/0 = 0
+5:6/0 = 0
+4:6/0 = 0
+3:6/0 = 0
+2:6/0 = 0
+1:6/0 = 0
+0:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gjg2v"]
+texture = ExtResource("2_nycl8")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+7:6/0 = 0
+7:7/0 = 0
+7:4/0 = 0
+7:3/0 = 0
+7:2/0 = 0
+7:1/0 = 0
+7:0/0 = 0
+6:2/0 = 0
+6:3/0 = 0
+5:5/0 = 0
+5:6/0 = 0
+4:6/0 = 0
+4:7/0 = 0
+4:5/0 = 0
+4:4/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+6:1/0 = 0
+6:0/0 = 0
+5:2/0 = 0
+4:1/0 = 0
+4:0/0 = 0
+5:1/0 = 0
+3:7/0 = 0
+3:6/0 = 0
+3:5/0 = 0
+3:4/0 = 0
+3:3/0 = 0
+3:0/0 = 0
+2:5/0 = 0
+2:4/0 = 0
+2:3/0 = 0
+2:2/0 = 0
+0:1/0 = 0
+0:2/0 = 0
+0:3/0 = 0
+0:4/0 = 0
+0:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+2:6/0 = 0
+1:1/0 = 0
+1:2/0 = 0
+1:3/0 = 0
+1:4/0 = 0
+1:5/0 = 0
+0:7/0 = 0
+5:0/0 = 0
+6:6/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_uaodw"]
+sources/0 = SubResource("TileSetAtlasSource_btfu2")
+sources/1 = SubResource("TileSetAtlasSource_gjg2v")
+
+[node name="TilemapWorld" type="Node2D"]
+script = ExtResource("1_j52ec")
+noise_height_text = SubResource("NoiseTexture2D_yq423")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_uaodw")

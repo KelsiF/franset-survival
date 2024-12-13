@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://buri2ra4gfcpd"]
+
+[sub_resource type="GDScript" id="GDScript_aj71r"]
+script/source = "extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="Gradient" id="Gradient_ry6x7"]
+colors = PackedColorArray(0, 0, 1, 1, 0, 1, 0.0117647, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0jrx2"]
+noise_type = 3
+frequency = 0.0016
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_t1ccr"]
+width = 1280
+height = 720
+color_ramp = SubResource("Gradient_ry6x7")
+noise = SubResource("FastNoiseLite_0jrx2")
+
+[node name="Generation" type="Node2D"]
+script = SubResource("GDScript_aj71r")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(644, 359)
+texture = SubResource("NoiseTexture2D_t1ccr")
