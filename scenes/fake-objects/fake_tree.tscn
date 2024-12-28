@@ -1,0 +1,44 @@
+[gd_scene load_steps=9 format=3 uid="uid://pigmxf0lwnxg"]
+
+[ext_resource type="Script" path="res://scripts/fake_tree.gd" id="1_85j2o"]
+[ext_resource type="Texture2D" uid="uid://dwjgbdnsoxxut" path="res://sprites/tree_anim/tree_broke1.png" id="1_wkvxg"]
+[ext_resource type="Texture2D" uid="uid://cghaf7xhke5ey" path="res://sprites/tree_anim/tree_broke2.png" id="2_y8321"]
+[ext_resource type="Texture2D" uid="uid://cwjthwi23nyeq" path="res://sprites/tree_anim/tree_broke3.png" id="3_nee2l"]
+[ext_resource type="Texture2D" uid="uid://dfil8ndkwgs06" path="res://sprites/tree_anim/tree_broke4.png" id="4_yqnp3"]
+[ext_resource type="Texture2D" uid="uid://dc22hhg6rfjtn" path="res://sprites/tree_anim/tree_broke5.png" id="5_31gen"]
+[ext_resource type="Texture2D" uid="uid://hra00b2axota" path="res://sprites/tree_anim/tree_broke6.png" id="6_bok7u"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1otcm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_wkvxg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_y8321")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_nee2l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_yqnp3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_31gen")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bok7u")
+}],
+"loop": true,
+"name": &"default",
+"speed": 0.0
+}]
+
+[node name="FakeTree" type="Node2D"]
+z_index = 20
+script = ExtResource("1_85j2o")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_1otcm")
+offset = Vector2(0, -12.725)

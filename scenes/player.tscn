@@ -1,6 +1,7 @@
-[gd_scene load_steps=34 format=3 uid="uid://baujd6cx6f056"]
+[gd_scene load_steps=36 format=3 uid="uid://baujd6cx6f056"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_2rpot"]
+[ext_resource type="PackedScene" uid="uid://b7p7yfqbhpmg4" path="res://scenes/ui_inventory.tscn" id="2_a5pqy"]
 [ext_resource type="Texture2D" uid="uid://dodcclek3325l" path="res://sprites/character/default/idle.png" id="2_hpo28"]
 [ext_resource type="Texture2D" uid="uid://l5djqb7gjwd4" path="res://sprites/character/default/walk.png" id="2_q03fa"]
 
@@ -226,12 +227,28 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_8my04"]
+radius = 30.0
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_2rpot")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(8.585, 0)
-zoom = Vector2(5, 5)
+zoom = Vector2(1.995, 1.995)
+process_callback = 0
+position_smoothing_enabled = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Camera2D"]
+position = Vector2(-53.86, -38.155)
+remote_path = NodePath("../../UiInventory")
+use_global_coordinates = false
+
+[node name="UiInventory" parent="." instance=ExtResource("2_a5pqy")]
+z_index = 1
+position = Vector2(-207, -98)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0)
@@ -241,3 +258,11 @@ shape = SubResource("RectangleShape2D_bec1k")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_ahyua")
 animation = &"walk_down"
+
+[node name="RadiusChop" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RadiusChop"]
+shape = SubResource("CircleShape2D_8my04")
+
+[connection signal="area_entered" from="RadiusChop" to="." method="_on_radius_chop_area_entered"]
+[connection signal="body_entered" from="RadiusChop" to="." method="_on_radius_chop_body_entered"]

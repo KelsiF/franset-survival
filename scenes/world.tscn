@@ -1,11 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://cwtivapw2eo58"]
+[gd_scene load_steps=4 format=3 uid="uid://cgtr1x576imv3"]
 
-[ext_resource type="PackedScene" uid="uid://bgamigva41n67" path="res://scenes/tilemap_world.tscn" id="1_p0a4h"]
-[ext_resource type="PackedScene" uid="uid://baujd6cx6f056" path="res://scenes/player.tscn" id="2_g8uw6"]
+[ext_resource type="Script" path="res://scripts/world.gd" id="1_4uhj4"]
+[ext_resource type="PackedScene" uid="uid://bgamigva41n67" path="res://scenes/tilemap_world.tscn" id="1_ey442"]
+[ext_resource type="PackedScene" uid="uid://baujd6cx6f056" path="res://scenes/player.tscn" id="2_vbji0"]
 
-[node name="Node2D" type="Node2D"]
+[node name="World" type="Node2D"]
+script = ExtResource("1_4uhj4")
 
-[node name="TilemapWorld" parent="." instance=ExtResource("1_p0a4h")]
+[node name="TilemapWorld" parent="." instance=ExtResource("1_ey442")]
+position = Vector2(0, 1)
 
-[node name="Player" parent="." instance=ExtResource("2_g8uw6")]
-position = Vector2(636, 390)
+[node name="Player" parent="." instance=ExtResource("2_vbji0")]
+position = Vector2(130, 97)
